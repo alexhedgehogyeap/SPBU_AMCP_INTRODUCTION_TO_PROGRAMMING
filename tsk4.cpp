@@ -42,19 +42,22 @@ int main() {
 	cout << "Enter a natural number less than 94." << endl;
 	while(getline(cin, input)){
          try {
-            temp = stod(input);
-            cout << typeid(stod(input)).name() << endl;
-            numb = stod(input);
-            if (numb >= 94 || numb <= 0){
-                cout << "Enter a natural number less than 94." << endl;
-                continue;
-            }
+           if(stod(input) == stoi(input)){
+                numb = stoi(input);
+                if (numb >= 94 || numb <= 0){
+                    cout << "Enter a natural number less than 94." << endl;
+                    continue;
+                }
+                else{
+                    break;
+                }
+           }
             else{
-                break;
+                 throw invalid_argument("");
             }
          }
         catch (invalid_argument) {
-            cout << "Not convertable to int" << endl;
+            cout << "Input is not int" << endl;
             cout << "Type number"<< endl;
         }
         catch (out_of_range ) {
@@ -63,22 +66,7 @@ int main() {
         }
         
     }
-    
-
-	// while (input <= 0 || input > 93) {
-	// 	if (input > 93) {
-	// 		cout << "The number entered is too big!!!" << endl;
-	// 	}
-		
-	// 	else {
-	// 		cout << "The number entered is too small!!!" << endl;
-	// 	}
-	// 	cin >> input;
-	// }
-	
-
-
-	cout << "The number below " << numb << ":" << endl;
+    cout << "The number below " << numb << ":" << endl;
 	cout << "Rec - " << Rec(numb) << endl;
 	cout << "Loop - " << Loop(numb) << endl;
 	cout << "Binne - " << Bine(numb) << endl;
